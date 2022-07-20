@@ -28,6 +28,11 @@ body {
 }
 
 #menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
     height: 600px;
     width: 300px;
     
@@ -35,6 +40,24 @@ body {
     
     background-color: #293462;
     border-radius: 48px;
+}
+
+.slide-container {
+    text-align: center;
+    width: 80%;
+}
+
+.slider {
+    width: 100%;
+}
+
+.slide-container p, .slide-container span {
+    font-size: 16px;
+    font-weight: 500;
+    color: #FFF80A;
+    
+    padding: 0px;
+    margin: 0px;
 }
 
 #screen {

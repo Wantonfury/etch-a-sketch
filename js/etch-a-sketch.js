@@ -1,21 +1,24 @@
 const screen = document.querySelector(".grid-container");
+const gridSlider = document.querySelector("#grid-size");
+const gridSize = document.querySelector('.slide-container span');
 
 let paintColor = [0, 0, 0];
 
-let mouseEnter = e => {
+let paintGrid = e => {
     console.log(e.buttons);
     if (e.buttons == 1) e.target.style.backgroundColor = "rgb(" + paintColor + ")";
 }
 
 let  getSize = () => {
-    return screen.dataset.size;
+    return gridSlider.value;
 }
 
 let clearGrid = () => {
     let grids = document.querySelectorAll('.grid-item');
     
     grids.forEach(g => {
-        g.removeEventListener('mousedown', changeMouseDown);
+        g.removeEventListener('mousedown', paintGrid);
+        g.removeEventListener('mouseenter', paintGrid);
         g.remove();
     });
 }
@@ -28,16 +31,20 @@ let adjustGrid = () => {
     for (let i = 0; i < size * size; ++i) {
         let d = document.createElement('div');
         d.classList.add('grid-item');
-        d.addEventListener('mouseenter', mouseEnter);
-        d.addEventListener('mousedown', mouseEnter);
+        d.addEventListener('mousedown', paintGrid);
+        d.addEventListener('mouseenter', paintGrid);
         screen.appendChild(d);
     }
     
     screen.style.gridTemplateColumns = "repeat(" + size + ", 1fr)";
     screen.style.gridTemplateRows = "repeat(" + size + ", 1fr)";
+    
+    gridSize.textContent = size;
 }
 
 let init = () => {
+    gridSlider.addEventListener('input', adjustGrid);
+    
     adjustGrid();
 }
 
