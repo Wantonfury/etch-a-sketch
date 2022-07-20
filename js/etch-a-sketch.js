@@ -29,6 +29,7 @@ let adjustGrid = () => {
         let d = document.createElement('div');
         d.classList.add('grid-item');
         d.addEventListener('mouseenter', mouseEnter);
+        d.addEventListener('mousedown', mouseEnter);
         screen.appendChild(d);
     }
     
