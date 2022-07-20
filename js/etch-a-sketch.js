@@ -1,30 +1,34 @@
 const screen = document.querySelector(".grid-container");
 
+let paintColor = [0, 0, 0];
 
-
-
-
+let mouseEnter = e => {
+    console.log(e.buttons);
+    if (e.buttons == 1) e.target.style.backgroundColor = "rgb(" + paintColor + ")";
+}
 
 let  getSize = () => {
     return screen.dataset.size;
 }
 
-let clearGrids = () => {
+let clearGrid = () => {
     let grids = document.querySelectorAll('.grid-item');
     
     grids.forEach(g => {
+        g.removeEventListener('mousedown', changeMouseDown);
         g.remove();
     });
 }
 
-let adjustGrids = () => {
+let adjustGrid = () => {
     let size = getSize();
     
-    clearGrids();
+    clearGrid();
     
     for (let i = 0; i < size * size; ++i) {
         let d = document.createElement('div');
         d.classList.add('grid-item');
+        d.addEventListener('mouseenter', mouseEnter);
         screen.appendChild(d);
     }
     
@@ -33,7 +37,7 @@ let adjustGrids = () => {
 }
 
 let init = () => {
-    adjustGrids();
+    adjustGrid();
 }
 
 init();
