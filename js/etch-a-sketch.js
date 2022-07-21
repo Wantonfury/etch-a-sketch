@@ -18,8 +18,8 @@ let paintGrid = e => {
         if (!paintRainbow && !paintFade) e.target.style.backgroundColor = paintColor;
         else if (paintRainbow) e.target.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
         else if (paintFade) {
-            paintColorFade = fadeColor(paintColorFade, -5);
             e.target.style.backgroundColor = paintColorFade;
+            paintColorFade = fadeColor(paintColorFade, -5);
         }
     }
     if (e.buttons == 0) paintColorFade = paintColor;
