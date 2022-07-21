@@ -9,7 +9,7 @@ const BORDER_NONE = "";
 
 let paintColor = "#000000";
 let paintColorFade;
-let border = true;
+let border = false;
 let paintRainbow = false;
 let paintFade = false;
 
